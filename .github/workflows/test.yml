@@ -12,5 +12,10 @@ jobs:
               run: npm install
             - name: build the project
               run: npm run build
+            - name: Deploying the project
+              env:
+                VERCEL_ORG_ID: 1ixXUf448FGviruQal96vAnC
+                VERCEL_PROJECT_ID: prj_kQZTUOulLN24SZXfwNoujKJ9Lbi9
+              run: npm run deploy  
             - name: setup finished
               run: echo "hoorey"
