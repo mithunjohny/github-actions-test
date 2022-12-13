@@ -3,6 +3,9 @@ on: [push]
 jobs:
     build-app:
         runs-on: ubuntu-latest
+         env:
+            VERCEL_ORG_ID: ${{secrets.VERCEL_ORG_ID}}
+            VERCEL_PROJECT_ID: ${{secrets.VERCEL_PROJECT_ID}}
         steps:
             - uses: actions/checkout@v2
             - uses: actions/setup-node@v2
@@ -12,10 +15,7 @@ jobs:
               run: npm install
             - name: build the project
               run: npm run build
-            - name: Deploying the project
-              env:
-                VERCEL_ORG_ID: 1ixXUf448FGviruQal96vAnC
-                VERCEL_PROJECT_ID: prj_kQZTUOulLN24SZXfwNoujKJ9Lbi9
+            - name: Deploying the project             
               run: npm run deploy  
             - name: setup finished
               run: echo "hoorey"
